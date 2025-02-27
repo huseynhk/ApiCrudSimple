@@ -103,6 +103,7 @@ const Home = () => {
                     onClick={() => openModal(user)}
                   >
                     Edit
+                    
                   </button>
                   <button
                     className="btn btn-danger ms-2"
