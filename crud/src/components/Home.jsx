@@ -53,12 +53,16 @@ const Home = () => {
   };
 
   const deleteUser = async (userId) => {
+    setLoading(true);
     await DeleteUser(userId);
     fetchUsers();
     toast.success("User deleted successfully!", {
       autoClose: 1000,
     });
-    closeDeleteModal();
+    setTimeout(() => {
+      setLoading(false);
+      closeDeleteModal();
+    }, 1200);
   };
   return (
     <>
@@ -72,7 +76,7 @@ const Home = () => {
       <div className="d-flex justify-content-center align-items-center flex-column">
         <h1 className="text-white my-3">User List</h1>
 
-        <table className="table table-striped w-75 fs-5 ">
+        <table className="table table-striped w-75 fs-4 ">
           <thead>
             <tr>
               <th>S.No</th>
@@ -87,11 +91,11 @@ const Home = () => {
           <tbody>
             {users.map((user, index) => (
               <tr key={user.id}>
-                <td>{index + 1}</td>
-                <td>{user.fullName}</td>
-                <td>{user.age}</td>
-                <td>{user.email}</td>
-                <td>{user.position}</td>
+                <td className="pt-3">{index + 1}</td>
+                <td className="pt-3">{user.fullName}</td>
+                <td className="pt-3">{user.age}</td>
+                <td className="pt-3"> {user.email}</td>
+                <td className="pt-3">{user.position}</td>
                 <td>
                   <button
                     className="btn btn-primary me-2"
@@ -117,7 +121,7 @@ const Home = () => {
             isModalOpen={isModalOpen}
             editedItem={editedItem}
             closeModal={closeModal}
-            loadin={loading}
+            loading={loading}
             setLoading={setLoading}
           />
         )}
@@ -126,6 +130,7 @@ const Home = () => {
           show={show}
           deletedItem={deletedItem}
           closeDeleteModal={closeDeleteModal}
+          loading={loading}
         />
       </div>
     </>

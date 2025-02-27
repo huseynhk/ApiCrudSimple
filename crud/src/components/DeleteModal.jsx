@@ -1,6 +1,12 @@
 import { Modal, Button } from "react-bootstrap";
 
-const DeleteModal = ({ deleteUser, show, deletedItem, closeDeleteModal }) => {
+const DeleteModal = ({
+  deleteUser,
+  show,
+  deletedItem,
+  closeDeleteModal,
+  loading,
+}) => {
   return (
     <Modal show={show} onHide={closeDeleteModal}>
       <Modal.Header closeButton>
@@ -10,7 +16,7 @@ const DeleteModal = ({ deleteUser, show, deletedItem, closeDeleteModal }) => {
       </Modal.Header>
       <Modal.Body className="text-primary fs-5">
         Are you sure you want to delete
-        <span className="text-danger fs-4 mx-1">
+        <span className="text-danger fs-4 ms-2 me-1">
           {deletedItem && deletedItem.fullName}
         </span>
         ?
@@ -21,7 +27,7 @@ const DeleteModal = ({ deleteUser, show, deletedItem, closeDeleteModal }) => {
           className="px-5 py-2"
           onClick={() => deleteUser(deletedItem.id)}
         >
-          Delete
+          {loading ? "Loading..." : "Delete"}
         </Button>
       </Modal.Footer>
     </Modal>

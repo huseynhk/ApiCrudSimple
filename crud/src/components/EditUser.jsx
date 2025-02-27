@@ -3,6 +3,7 @@ import { EditUsers } from "../api/editRequst";
 import { Modal, Form, Button } from "react-bootstrap";
 import useForm from "../hooks/UseForm";
 import { isInputFilled } from "../utils/IsInputFill";
+import { toast } from "react-toastify";
 
 const EditUser = ({
   isModalOpen,
@@ -26,10 +27,13 @@ const EditUser = ({
   const updateUser = async () => {
     setLoading(true);
     await EditUsers(editedUser.id, editedUser);
+    toast.success("User edited successfully!", {
+      autoClose: 1000,
+    });
     setTimeout(() => {
       setLoading(false);
       closeModal();
-    }, 1500);
+    }, 1200);
   };
 
   return (

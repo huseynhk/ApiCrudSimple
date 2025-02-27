@@ -24,6 +24,9 @@ const AddUser = ({ inputRef, setFocus, loading, setLoading, fetchUsers }) => {
     setNewUser(initialState);
     fetchUsers();
     // resetForm(); // custom hook ile
+    setTimeout(() => {
+      setLoading(false);
+    }, 1200);
     toast.success("User added successfully!", {
       autoClose: 1000,
     });
