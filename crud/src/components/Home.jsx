@@ -102,7 +102,7 @@ const Home = () => {
                     className="btn btn-primary"
                     onClick={() => openModal(user)}
                   >
-                    Modal
+                    Edit
                   </button>
                   <button
                     className="btn btn-danger ms-2"
