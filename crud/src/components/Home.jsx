@@ -86,7 +86,6 @@ const Home = () => {
               <th>Age</th>
               <th>Email</th>
               <th>Position</th>
-              <th>Update</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -100,15 +99,13 @@ const Home = () => {
                 <td className="pt-3">{user.position}</td>
                 <td>
                   <button
-                    className="btn btn-primary me-2"
+                    className="btn btn-primary"
                     onClick={() => openModal(user)}
                   >
                     Modal
                   </button>
-                </td>
-                <td>
                   <button
-                    className="btn btn-danger me-2"
+                    className="btn btn-danger ms-2"
                     onClick={() => openDeleteModal(user)}
                   >
                     Delete
