@@ -15,10 +15,12 @@ const Home = () => {
   // Edit Modal
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editedItem, setEditedItem] = useState(null);
+  const [loadingEdit, setLoadingEdit] = useState(false);
 
   // Delete Modal
   const [show, setShow] = useState(false);
   const [deletedItem, setDeletedItem] = useState(null);
+  const [loadingDelete, setLoadingDelete] = useState(false);
 
   const fetchUsers = async () => {
     const response = await GetUsers();
@@ -53,14 +55,14 @@ const Home = () => {
   };
 
   const deleteUser = async (userId) => {
-    setLoading(true);
+    setLoadingDelete(true);
     await DeleteUser(userId);
     fetchUsers();
     toast.success("User deleted successfully!", {
       autoClose: 1000,
     });
     setTimeout(() => {
-      setLoading(false);
+      setLoadingDelete(false);
       closeDeleteModal();
     }, 1200);
   };
@@ -121,8 +123,8 @@ const Home = () => {
             isModalOpen={isModalOpen}
             editedItem={editedItem}
             closeModal={closeModal}
-            loading={loading}
-            setLoading={setLoading}
+            loading={loadingEdit}
+            setLoading={setLoadingEdit}
           />
         )}
         <DeleteModal
@@ -130,7 +132,7 @@ const Home = () => {
           show={show}
           deletedItem={deletedItem}
           closeDeleteModal={closeDeleteModal}
-          loading={loading}
+          loading={loadingDelete}
         />
       </div>
     </>
